@@ -25,10 +25,13 @@
   height  2.2rem
   background-color  #e5017d
   line-height 2.2rem
+  position fixed
+  z-index 999
+  width 100%
+  top 0
+  
   
   .item
-
-   
     .iconfont
       font-size 1.4rem
       padding-left .5rem

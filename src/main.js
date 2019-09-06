@@ -8,8 +8,10 @@ import 'css/iconfont.css'
 import 'vant/lib/index.css'
 import 'css/border.css'
 import 'swiper/dist/css/swiper.css'
-import {Button,Row,Col,Swipe,SwipeItem, Icon} from 'vant'
-Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Icon)
+import {Button,Row,Col,Swipe,SwipeItem, Icon, Tabbar, TabbarItem,TreeSelect,NavBar, GoodsAction,
+  GoodsActionIcon,GoodsActionButton } from 'vant'
+Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Icon).use(Tabbar).use(TabbarItem).use(TreeSelect)
+.use(GoodsAction).use(GoodsActionIcon).use(GoodsActionButton).use(NavBar)
 
 Vue.config.productionTip = false
 

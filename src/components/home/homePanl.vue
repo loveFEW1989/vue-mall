@@ -7,7 +7,8 @@
      </li>
    </ul>
    <div class="ad" >
-     <img :src="advertesPicture" alt="" width="100%">
+     <img :src="advertesPicture.PICTURE_ADDRESS
+" alt="" width="100%">
    </div>
   </div>
 </template>
@@ -21,12 +22,7 @@
           return []
         }
       },
-      advertesPicture:{
-        type: String,
-        default() {
-          return ''
-        }
-      }
+      advertesPicture:Object
     }
   }
 </script>
