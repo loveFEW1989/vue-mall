@@ -8,19 +8,20 @@
                 @click-left="goBack"
         />
                 <div class="address-warp">
-                    <div class="address addnull"  @click="goAddress">
-                        点击添加收货地址
-                    </div>
-                    <!-- <div class="address" @click="editAddress">
+                    
+                    <div class="address" v-if="selectedAddress"  @click="editAddress">
                         <div class="icon"><van-icon name="location" class="location"/></div>
                         <div class="address-cont">
-                            <p class="name">收货人: {{temporaryAddress.name || defaultAdd.name}} <span>{{temporaryAddress.tel || defaultAdd.tel}}</span></p>
-                            <p class="address-e">收货地址: {{temporaryAddress.address || defaultAdd.address}}</p>
+                            <p class="name">收货人: {{selectedAddress.name }} <span>{{selectedAddress.tel }}</span></p>
+                            <p class="address-e">收货地址: {{selectedAddress.address }}</p>
                             <p class="no">(收货不便时,可选择免费待收货服务)</p>
                         </div>
                         <div class="icon2"><van-icon name="arrow" class="location"/></div>
-                    </div> -->
-                    <img :src="caitiao" width="100%" height="3px" alt="" class="caitiao">
+
+                    </div>
+                    <div class="address addnull" v-else  @click="goAddress">
+                        点击添加收货地址
+                    </div>
                 <Scroll :data='allCheckedList' ref="scroll" class="scroll">
                     <div class="goods-list">
                         <GoodsList :list='allCheckedList' :isOrder='true'/>
@@ -42,12 +43,18 @@
 <script>
 import GoodsList from 'components/public/GoodsList'
 import Scroll from 'components/public/Scroll'
-import {mapGetters} from 'vuex'
+import {mapGetters,mapMutations} from 'vuex'
   export default {
     name: 'Pay',
+    data() {
+        return {
+            
+            isLoading: false,
+        }
+    },
     components:{GoodsList,Scroll},
     computed:{
- ...mapGetters(['allCheckedList','getTotalPrice']),
+ ...mapGetters(['allCheckedList','getTotalPrice','selectedAddress']),
  price() {
    let num = 0
    if(this.allCheckedList.length){
@@ -59,11 +66,27 @@ import {mapGetters} from 'vuex'
  }
     },
     methods: {
+        ...mapMutations(['setMyOder']),
       goBack() {
         this.$router.go(-1)
+      },
+      goAddress() {
+        this.$router.push({name:'Address'})
+      },
+      editAddress(item) {
+          this.$router.push({name:'Address'})
+      },
+      onSubmit() {
+      if(!selectedAddress) {
+  this.$toast('请添加收获地址')
+                return
       }
+      }
+    },
+    mounted() {
+       
     }
-
+ 
   }
 </script>
 

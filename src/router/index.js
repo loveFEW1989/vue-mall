@@ -7,6 +7,8 @@ import ShoppingCart from 'pages/ShoppingCart'
 import My from 'pages/My'
 import Details from 'pages/Details'
 import Pay from 'pages/Pay'
+import Address from 'pages/Address'
+import AddressEdit from 'pages/AddressEdit'
 Vue.use(Router)
 
 export default new Router({
@@ -40,6 +42,9 @@ export default new Router({
       component:My
     },
     { path: '/details', name: 'Details', component: Details},
-    { path: '/pay', name: 'Pay', component: Pay}
+    { path: '/pay', name: 'Pay', component: Pay},
+    { path: '/address', name: 'Address', component: Address }, // 地址
+    { path: '/addressEdit', name: 'AddressEdit', component: AddressEdit }, // 新增和编辑地址
+    
   ]
 })

@@ -1,11 +1,22 @@
 import Vue from 'vue'
 const state = {
   
-    goodsList:JSON.parse(localStorage.getItem('cartList') || '[]') // 商品列表，刚开始为空
-  
-}
+    goodsList:JSON.parse(localStorage.getItem('cartList') || '[]'), // 商品列表，刚开始为空
+    addressList:JSON.parse(localStorage.getItem('addresslist') || '[]'),
+    selectedAddress:JSON.parse(localStorage.getItem('selectedaddress') || '{}'),
+    myOrderList:JSON.parse(localStorage.getItem('myorderlist') || '[]'),
+  }
 
 const getters = {
+  addressList(state){
+    return state.addressList
+  },
+  addressInfo(state){
+   return state.addressList[state.addressList.length-1]
+  },
+  selectedAddress(state){
+    return state.selectedAddress
+  },
   // 购物车列表
   getGoodsList(state){
     return state.goodsList
@@ -96,13 +107,13 @@ reduce(state,good){
 },
 
 
-change( state, {id,value} ) {
-  state.goodsList.forEach( ( item, index ) => {
-      if( item.id == id ){
-          item.count = value;
-      }
-  });
-},
+// change( state, {id,value} ) {
+//   state.goodsList.forEach( ( item, index ) => {
+//       if( item.id == id ){
+//           item.count = value;
+//       }
+//   });
+// },
 
 // 更新选中状态
 updateGoodsChecked(state,val) {
@@ -160,7 +171,61 @@ del(state,product) {
     localStorage.setItem('cartList', JSON.stringify(state.goodsList));
  
 },
-  
+
+// 地址相关
+setAddress(state,info) {
+  info.id = state.addressList.length
+  state.addressList.push(info) 
+     //保存到本地存储
+     localStorage.setItem('addresslist', JSON.stringify(state.addressList));
+ 
+},
+// 删除地址
+deleteAddress(state,info){
+  state.addressList.forEach((n,i) =>{
+    if(n.id== info.id){
+      state.addressList.splice(i,1)
+    }
+  })
+   //更新本地存储
+   localStorage.setItem('addresslist', JSON.stringify(state.addressList));
+ 
+},
+// 清空地址列表
+clearAllAddressList(state){
+  state.addressList = []
+   //更新本地存储
+   localStorage.setItem('addresslist', JSON.stringify(state.addressList));
+ 
+},
+// 设置选中的地址
+setSelectedAddress(state,info) {
+  state.addressList.forEach((n,i) =>{
+    if(n.id== info.id){
+      state.selectedAddress = state.addressList[i]
+    }
+  })
+   //更新本地存储
+   localStorage.setItem('selectedaddress', JSON.stringify(state.selectedAddress));
+ 
+},
+
+  // 订单相关
+
+  setMyOder(state,info) {
+    
+    state.myOrderList.push(info)
+    let arr = state.goodsList.filter(n=> {
+      return !n.checked 
+    })
+    state.goodsList = arr
+
+ //更新本地存储
+   localStorage.setItem('myorderlist', JSON.stringify(state.myOrderList));
+   
+   localStorage.setItem('cartList', JSON.stringify(state.goodsList));
+ 
+  }
 
 
 

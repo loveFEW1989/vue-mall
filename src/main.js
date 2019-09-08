@@ -9,12 +9,12 @@ import 'vant/lib/index.css'
 import 'css/border.css'
 import 'swiper/dist/css/swiper.css'
 import store from './store'
-import { Dialog } from 'vant'
-Vue.use(Dialog)
+
 import {Button,Row,Col,Swipe,SwipeItem, Icon, Tabbar, TabbarItem,TreeSelect,NavBar, GoodsAction,
-  GoodsActionIcon,GoodsActionButton,Cell, CellGroup, SubmitBar } from 'vant'
+  GoodsActionIcon,GoodsActionButton,Cell, CellGroup, SubmitBar ,AddressList,AddressEdit,Dialog, Loading,Toast  } from 'vant'
 Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Icon).use(Tabbar).use(TabbarItem).use(TreeSelect)
 .use(GoodsAction).use(GoodsActionIcon).use(GoodsActionButton).use(NavBar).use(Cell).use(CellGroup).use( SubmitBar)
+.use(AddressList).use(AddressEdit ).use(Dialog).use( Loading ).use(Toast)
 
 Vue.config.productionTip = false
 
