@@ -6,6 +6,7 @@ import Category from 'pages/Category'
 import ShoppingCart from 'pages/ShoppingCart'
 import My from 'pages/My'
 import Details from 'pages/Details'
+import Pay from 'pages/Pay'
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +39,7 @@ export default new Router({
       name:'My',
       component:My
     },
-    { path: '/details', name: 'Details', component: Details}
+    { path: '/details', name: 'Details', component: Details},
+    { path: '/pay', name: 'Pay', component: Pay}
   ]
 })

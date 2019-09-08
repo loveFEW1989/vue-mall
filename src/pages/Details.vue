@@ -1,9 +1,9 @@
 <template>
   <div class="goods">
     <van-goods-action>
-      <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+      <van-goods-action-icon icon="cart-o" to="/ShoopingCart" text="购物车" :info="this.GoodsList.length" />
       <van-goods-action-icon icon="shop-o" @click="goHome" text="店铺" />
-      <van-goods-action-button type="warning" text="加入购物车" />
+      <van-goods-action-button type="warning"  @click="add2Cart(goods)"  text="加入购物车" />
       <van-goods-action-button type="danger" text="立即购买" />
     </van-goods-action>
 
@@ -39,6 +39,7 @@
 <script>
 import Back from "components/public/Back";
 import Scroll from "components/public/Scroll";
+import {mapMutations, mapGetters} from 'vuex'
 export default {
   name: "Details",
   data() {
@@ -52,11 +53,22 @@ export default {
   methods: {
     goHome() {
       this.$router.push({ name: "Home" });
-    }
+    },
+      ...mapMutations(['addGoods']),
+      add2Cart(goods){
+        this.addGoods(goods)
+        this.$dialog.alert({
+      message: '成功加入购物车'
+    });
+      }
   },
-  computed: {},
+ computed: {
+    ...mapGetters({
+      GoodsList: "getGoodsList"
+    })
+  },
   mounted() {
-    console.log(this.goods);
+   console.log(this.goods)
   },
   destroyed(){
     console.log('destroyed。。。')
