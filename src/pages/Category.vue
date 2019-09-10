@@ -4,7 +4,7 @@
     <van-tree-select height="100%" :items="items" :main-active-index.sync="activeIndex">
       <template slot="content" class="wrapper" ref="wrapper">
         <div class="item" v-for="(item,index) of items" :key="index">
-          <goods-list :list="item.children" v-if="activeIndex === index"></goods-list>
+          <goods-list  :list="item.children" v-if="activeIndex === index"></goods-list>
         </div>
       </template>
     </van-tree-select>

@@ -10,22 +10,36 @@
 
         <span class="pic" >￥{{item.present_price}}</span>
        <span class="old-pic">{{item.orl_price}}</span>
-              
-      </p>
+          
+     </p>
+      <div v-if="!isOrder" class="btn-item" @click.stop="add2Cart(item)">
+     <van-button class="btn" type="danger" size="mini">加入购物车</van-button>    
+      
+      </div>
     </div>
    </li>
  </ul>
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
   export default {
     name: 'GoodsList',
     props:{
       list:{
         type: null
-      }
+      },
+      isOrder:{type: Boolean,default(){return false}}
     },
     methods: {
+       ...mapMutations(['addGoods']),
+      //  加入购物车
+
+      add2Cart(goods){
+        this.addGoods(goods)
+        this.$dialog.alert({
+      message: '成功加入购物车'
+    })},
        // 跳转到商品详情页
         details(val) {
            
@@ -41,11 +55,19 @@
 </script>
 
 <style lang="stylus" scoped>
+.btn-item{
+  width 100px
+  height 45px
+  padding-top 10px
+}
+.btn{
+  
+}
 ul
   background #fff
   .good-item
      display flex
-     height 110px
+     height 120px
      box-sizing border-box
      position relative
      &.list-enter-active, &.list-leave-active 

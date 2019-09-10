@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["setAddress", "editAddress", "setDefaultAddress"]),
+    ...mapMutations(["setAddress", "editAddress", "setDefaultAddress","setSelectedAddress"]),
     onSave(val) {
       let data = {
         name: val.name,
@@ -58,6 +58,7 @@ export default {
       });
       if (this.item) {
         this.editAddress(data);
+        this.setSelectedAddress(data)
         if (this.isDefault) {
           this.setDefaultAddress(data);
         }

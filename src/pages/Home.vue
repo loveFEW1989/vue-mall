@@ -55,13 +55,11 @@ export default {
   created() {
     if (localStorage.getItem("homedata")) {
       this.recommend = JSON.parse(localStorage.getItem("homedata"));
-      console.log(this.recommend)
+     
       return;
     }
     axios.get('/api/home')
       .then(res => {
-
-        console.log(res.data.data);
         if (res.status === 200) {
           this.recommend = res.data.data.data;
            localStorage.setItem("homedata", JSON.stringify(res.data.data.data));
@@ -70,16 +68,6 @@ export default {
       .catch(err => {
         console.log(err);
       });
-  },
-  mounted() {
-    console.log('mounted')
-    console.log('nextTick')
-    // console.log(JSON.parse(localStorage.getItem("homedata")))
-    //   this.$nextTick(function() {
-    //               this.recommend = JSON.parse(localStorage.getItem("homedata"));
-               
-    //   });
-    
   }
 };
 </script>

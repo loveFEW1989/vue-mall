@@ -57,7 +57,7 @@ export default {
   computed: {
     ...mapGetters(["allCheckedList", "getTotalPrice", "selectedAddress","getdefaultAddress"]),
     address() {
-      return this.getdefaultAddress || this.selectedAddress
+      return this.selectedAddress ? this.selectedAddress : this.getdefaultAddress 
     },
     price() {
       let num = 0;
@@ -111,6 +111,9 @@ export default {
   mounted() {
     console.log(this.address)
 
+  },
+  created() {
+    console.log('created')
   }
 };
 </script>
