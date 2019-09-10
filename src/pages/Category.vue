@@ -26,40 +26,34 @@ export default {
     };
   },
   created() {
-     
     if (localStorage.getItem("categorylist")) {
       this.items = JSON.parse(localStorage.getItem("categorylist"));
-      
-      return;
-    } 
-      axios.get('/api/category').then(res => {
-      
 
-        this.items = res.data.data.datalist;
-        localStorage.setItem("categorylist",JSON.stringify(res.data.data.datalist))
-      });
-    
+      return;
+    }
+    axios.get("/api/category").then(res => {
+      this.items = res.data.data.datalist;
+      localStorage.setItem(
+        "categorylist",
+        JSON.stringify(res.data.data.datalist)
+      );
+    });
   },
   components: { goodsList, Scroll },
 
   methods: {
-   
     getParams() {
-     
-      if(this.$route.params.index){
-this.activeIndex = this.$route.params.index
-      }else {
- this.activeIndex=1
+      if (this.$route.params.index) {
+        this.activeIndex = this.$route.params.index;
+      } else {
+        this.activeIndex = 1;
       }
-     
-      
     }
   },
-watch: {
-　　// 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
-　　'$route': 'getParams'
-　　},
-
+  watch: {
+    // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
+    $route: "getParams"
+  }
 };
 </script>
 

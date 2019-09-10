@@ -11,10 +11,10 @@
         <span class="mallPrice ">{{val.price}}</span>
       </p>
       <div class="panl">
-        <div class="left">
+        <div class="left" @click="add2Cart(val)">
           <van-icon  size="20px" name="cart-o"></van-icon>
         </div>
-        <div class="right">查看详情</div>
+        <div class="right" @click="gotoDetail(val)">查看详情</div>
       </div>
       </swiper-slide>
     </swiper>
@@ -25,7 +25,7 @@
 import Vue from 'vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
-
+import {mapMutations} from 'vuex'
   export default {
     props: {
       recommend: {
@@ -47,7 +47,7 @@ Vue.use(VueAwesomeSwiper)
       }
     },
     methods: {
-   
+     ...mapMutations(['addGoods']),
       //  跳转到商品详情页
         gotoDetail(val) {
            
@@ -57,7 +57,18 @@ Vue.use(VueAwesomeSwiper)
                 item:val
               }
             })
-        }
+        },
+        // 跳转到购物车
+    //      onClickCart() {
+    //   this.$router.push({ name: "ShoppingCart" });
+    // }
+    // 添加商品到购物车
+     add2Cart(item){
+        this.addGoods(item)
+        this.$dialog.alert({
+      message: '成功加入购物车'
+    });
+      }
     }
   }
 </script>
