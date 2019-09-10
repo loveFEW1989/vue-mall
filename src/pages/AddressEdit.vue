@@ -11,13 +11,13 @@
         :addressInfo="info"
         :search-result="searchResult"
         @save="onSave"
-       
+        @change-default="setDefault"
       />
     </div>
   </div>
 </template>
 <script>
-import { mapMutations ,mapGetters} from 'vuex';
+import { mapMutations, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -25,19 +25,22 @@ export default {
       searchResult: [],
       areaList: require("js/area.js").default,
       showDelete: false,
-      item: this.$route.params.item
+      item: this.$route.params.item,
+      isDefault: false
     };
   },
-  computed:{
-...mapGetters(['addressInfo']),
-info() {
-  return this.item ? this.item : ''
-}
+  computed: {
+    ...mapGetters(["addressInfo"]),
+    info() {
+      if(this.item){
+        return this.item
+      }
+    
+    }
   },
   methods: {
-...mapMutations(['setAddress']),
+    ...mapMutations(["setAddress", "editAddress", "setDefaultAddress"]),
     onSave(val) {
-      console.log(val);
       let data = {
         name: val.name,
         tel: val.tel,
@@ -48,20 +51,33 @@ info() {
         county: val.county,
         addressDetail: val.addressDetail,
         areaCode: val.areaCode,
-        
+        id: this.item ? this.item.id : null
       };
-       this.$dialog.alert({
-          message: "已成功保存该地址"
-        });
-       this.setAddress(data)
-      
-    },
-     goback() {
-        this.$router.go(-1)
+      this.$dialog.alert({
+        message: "已成功保存该地址"
+      });
+      if (this.item) {
+        this.editAddress(data);
+        if (this.isDefault) {
+          this.setDefaultAddress(data);
+        }
+      } else {
+        this.setAddress(data);
+        if (this.isDefault) {
+          this.setDefaultAddress(data);
+        }
       }
+    },
+    goback() {
+      this.$router.go(-1);
+    },
+    setDefault() {
+      this.isDefault = !this.isDefault;
+    }
+    
   },
   mounted() {
-    console.log(this.item)
+    console.log(this.item);
   }
 };
 </script>

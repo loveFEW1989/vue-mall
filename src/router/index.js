@@ -7,8 +7,9 @@ import ShoppingCart from 'pages/ShoppingCart'
 import My from 'pages/My'
 import Details from 'pages/Details'
 import Pay from 'pages/Pay'
-import Address from 'pages/Address'
+import AddressList from 'pages/AddressList'
 import AddressEdit from 'pages/AddressEdit'
+import MyOrder from 'pages/MyOrder'
 Vue.use(Router)
 
 export default new Router({
@@ -43,8 +44,9 @@ export default new Router({
     },
     { path: '/details', name: 'Details', component: Details},
     { path: '/pay', name: 'Pay', component: Pay},
-    { path: '/address', name: 'Address', component: Address }, // 地址
+    { path: '/address', name: 'Address', component: AddressList }, // 地址
     { path: '/addressEdit', name: 'AddressEdit', component: AddressEdit }, // 新增和编辑地址
+    { path: '/myOrder', name: 'MyOrder', component: MyOrder }, // 全部订单
     
   ]
 })

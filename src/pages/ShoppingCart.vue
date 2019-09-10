@@ -25,12 +25,6 @@
               <p class="two">
                 <i class="iconfont icon-jianhao" @click="reduces(val)"></i>
                 <span>{{val.count}}</span>
-                <!-- <input
-                  style="width:17px;height:26px"
-                  @input="handleChange(val)"
-                  type="text"
-                  :value="val.count"
-                />-->
                 <i @click="adds(val)" class="iconfont icon-jiahao"></i>
               </p>
             </div>
@@ -54,21 +48,20 @@
         </div>
       </div>
     </div>
-     <div class="shop-warpper" v-show="!GoodsList.length ">
-            <div class="shop">
-                <img :src="noShop" alt>
-            </div>
-            <p class="desc">您的购物车还是空的额</p>
-            <!-- <p class="desc">{{!userName?'请先登录噢~~':'您的购物还是空空的哦'}}</p>
+    <div class="shop-warpper" v-show="!GoodsList.length ">
+      <div class="shop">
+        <img :src="noShop" alt />
+      </div>
+      <p class="desc">您的购物车还是空的额</p>
+      <!-- <p class="desc">{{!userName?'请先登录噢~~':'您的购物还是空空的哦'}}</p>
             <p class="desc2" @click="goshop" v-if="userName">去购物</p>
-            <p class="desc2" @click="goLogin" v-else>去登录</p> -->
-        </div>
+      <p class="desc2" @click="goLogin" v-else>去登录</p>-->
+    </div>
   </div>
 </template>
 
 <script>
 import Scroll from "components/public/Scroll";
-
 import { mapGetters, mapMutations } from "vuex";
 export default {
   data() {
@@ -76,7 +69,7 @@ export default {
       allCheck: false,
       checkList: [],
       checked: false,
-       noShop: require("img/shop.png"),
+      noShop: require("img/shop.png")
     };
   },
   components: { Scroll },
@@ -88,14 +81,6 @@ export default {
       allCheckedList: "allCheckedList"
     })
   },
-  mounted() {
-    console.log(this.GoodsList);
-    //  this.$nextTick(function() {
-    //     var cart = JSON.parse(localStorage.getItem('cartList') || '[]');
-    //     this.GoodsList = cart;
-
-    //  })
-  },
 
   methods: {
     ...mapMutations([
@@ -106,6 +91,12 @@ export default {
       "updateGettersGoodsChecked"
     ]),
     goToPay() {
+      if (!this.allCheckedList.length) {
+        this.$dialog.alert({
+          title: "没有选择商品"
+        });
+        return;
+      }
       this.$router.push({ name: "Pay" });
     },
     reduces(val) {
@@ -155,26 +146,7 @@ export default {
       this.updateGoodsChecked(val);
     }
 
-    // async editCart(flag,val) {
-    //   console.log(val)
-    //   if(flag == 'minu') {
-    //     if(val.count<=1) {
-    //       return
-    //     }
-    //     val.count --
-
-    //   } else if( flag == 'add') {
-    //     if(val.count>=10) {
-    //       this.$dialog.alert({
-    //         message: '同一商品最多只能购买10件'
-    //       })
-    //       return
-    //     }
-    //     val.count++
-    //   }
-    //   this.updateGoodsInfo(val)
-
-    // }
+   
   }
 };
 </script>

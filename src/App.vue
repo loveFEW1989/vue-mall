@@ -6,12 +6,12 @@
             </keep-alive>
             <router-view v-else id="view"></router-view>
         </transition>
-       <BaseFooter/>
+     <router-footer></router-footer>
     </div>
 </template>
 
 <script>
-import BaseFooter from 'components/public/BaseFooter'
+import routerFooter from 'components/public/RouterFooter'
 export default {
    
     name: "App",
@@ -20,7 +20,7 @@ export default {
             animate: ""
         };
     },
-    components:{BaseFooter},
+    components:{routerFooter},
     
     methods: {
         // 切换路由

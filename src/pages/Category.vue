@@ -1,79 +1,91 @@
 <template>
-<div>
-   <van-nav-bar title="商品分类"  fixed/>
-<van-tree-select 
-  height="100%" 
-  :items="items"
-   :main-active-index.sync="activeIndex">
-    <template slot="content" class="wrapper"  ref="wrapper">
-    
-      <div class="item" v-for="(item,index) of items" :key="index" >
-         <goods-list :list="item.children" v-if="activeIndex === index"></goods-list>
-
-      </div>
-   
-      
-    </template>
-  </van-tree-select>
-
-</div>
-  
+  <div>
+    <van-nav-bar title="商品分类" fixed />
+    <van-tree-select height="100%" :items="items" :main-active-index.sync="activeIndex">
+      <template slot="content" class="wrapper" ref="wrapper">
+        <div class="item" v-for="(item,index) of items" :key="index">
+          <goods-list :list="item.children" v-if="activeIndex === index"></goods-list>
+        </div>
+      </template>
+    </van-tree-select>
+  </div>
 </template>
 
 <script>
 import url from "@/api.config.js";
 import axios from "axios";
 import goodsList from "components/public/GoodsList";
-import Scroll from 'components/public/Scroll'
-
+import Scroll from "components/public/Scroll";
 export default {
   data() {
     return {
       items: [],
       activeId: 1,
-      activeIndex: 0,
+      activeIndex: 1,
       listenScroll: true
     };
   },
   created() {
-    axios({
-      url: url.getCategory,
-      method: "GET"
-    }).then(res => {
-      console.log(res);
      
-      this.items = res.data.datalist;
-     
-    });
+    if (localStorage.getItem("categorylist")) {
+      this.items = JSON.parse(localStorage.getItem("categorylist"));
+      
+      return;
+    } 
+      axios.get('/api/category').then(res => {
+      
+
+        this.items = res.data.data.datalist;
+        localStorage.setItem("categorylist",JSON.stringify(res.data.data.datalist))
+      });
+    
   },
-  components: { goodsList, Scroll},
+  components: { goodsList, Scroll },
+
   methods: {
-    scroll(x,y) {
-      conosle.log(x,y)
+   
+    getParams() {
+     
+      if(this.$route.params.index){
+this.activeIndex = this.$route.params.index
+      }else {
+ this.activeIndex=1
+      }
+     
+      
     }
-  }
+  },
+watch: {
+　　// 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
+　　'$route': 'getParams'
+　　},
+
 };
 </script>
 
 <style lang="stylus" scoped>
-.van-tree-select{
+.van-tree-select {
   top: 50px;
 }
+
 .van-tree-select__nav-item {
   height: 80px;
   line-height: 80px;
 }
-.van-tree-select__content{
-  height: 700px !important
+
+.van-tree-select__content {
+  height: 700px !important;
 }
-.scroll{
-    position: fixed;
+
+.scroll {
+  position: fixed;
   top: 0px;
   bottom: 50px;
   left: 0;
   right: 0;
   overflow: hidden;
 }
+
 ul {
   background: #fff;
 

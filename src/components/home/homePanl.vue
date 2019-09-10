@@ -1,15 +1,14 @@
 <template>
   <div class="panl">
    <ul v-show="category&&category.length">
-     <li v-for="(val,index) of category" :key="index">
+     <li v-for="(val,index) of category" :key="index" @click="item(val,index)">
        <img :src="val.image" alt="">
        <p>{{val.mallCategoryName}}</p>
      </li>
    </ul>
-   <div class="ad" >
-     <img :src="advertesPicture.PICTURE_ADDRESS
-" alt="" width="100%">
-   </div>
+   <!-- <div class="ad" >
+     <img :src="addUrl" alt="" width="100%">
+   </div> -->
   </div>
 </template>
 
@@ -21,9 +20,14 @@
         default() {
           return []
         }
-      },
-      advertesPicture:Object
-    }
+      }
+    },
+      methods: {
+        item(val,index) {
+          console.log(val,index)
+            this.$emit('item',val,index)
+        }
+    },
   }
 </script>
 

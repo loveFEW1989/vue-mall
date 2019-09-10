@@ -1,9 +1,9 @@
 {
 
   "data": {
-    "advertesPicture": {
-      "PICTURE_ADDRESS": "http://images.baixingliangfan.cn/advertesPicture/20180404/20180404085441_850.gif"
-    },
+   
+      "PICTURE_ADDRESS": "http://images.baixingliangfan.cn/advertesPicture/20180404/20180404085441_850.gif",
+    
     "floor3": [{
       "goodsId": "ae4e71807a91460792670b657fa3ed3a",
       "image": "http://images.baixingliangfan.cn/homeFloor/20180407/20180407181423_15.jpg"
@@ -58,7 +58,7 @@
       "image": "http://images.baixingliangfan.cn/homeFloor/20180407/20180407180427_8557.jpg"
     }],
     "category": [{
-      "mallCategoryId": "1",
+      "mallCategoryId": 0,
       "mallCategoryName": "新鲜水果",
       "bxMallSubDto": [{
         "mallSubId": "2c9f6c946016ea9b016016f79c8e0000",
@@ -84,8 +84,8 @@
       "comments": null,
       "image": "http://images.baixingliangfan.cn/firstCategoryPicture/20180408/20180408111959_2837.png"
     }, {
-      "mallCategoryId": "2",
-      "mallCategoryName": "中外名酒",
+      "mallCategoryId": 1,
+      "mallCategoryName": "海鲜生鲜",
       "bxMallSubDto": [{
         "mallSubId": "2c9f6c9460337d540160337fefd60000",
         "mallCategoryId": "2",
@@ -115,7 +115,7 @@
       "comments": null,
       "image": "http://images.baixingliangfan.cn/firstCategoryPicture/20180408/20180408112010_4489.png"
     }, {
-      "mallCategoryId": "3",
+      "mallCategoryId": 2,
       "mallCategoryName": "营养奶品",
       "bxMallSubDto": [{
         "mallSubId": "402880e86016d1b5016016e135440011",
@@ -141,7 +141,7 @@
       "comments": null,
       "image": "http://images.baixingliangfan.cn/firstCategoryPicture/20180408/20180408113102_1595.png"
     }, {
-      "mallCategoryId": "5",
+      "mallCategoryId": 3,
       "mallCategoryName": "食品饮料",
       "bxMallSubDto": [{
         "mallSubId": "2c9f6c94609a62be0160a02d1dc20021",
@@ -207,7 +207,7 @@
       "comments": null,
       "image": "http://images.baixingliangfan.cn/firstCategoryPicture/20180408/20180408113048_1276.png"
     }, {
-      "mallCategoryId": "4",
+      "mallCategoryId": 4,
       "mallCategoryName": "个人护理",
       "bxMallSubDto": [{
         "mallSubId": "2c9f6c94621970a801626a35cb4d0175",
@@ -365,7 +365,21 @@
       "mallPrice": 16.80,
       "goodsId": "238bc2e023844769a6b67d9a4c04b2ea",
       "price": 16.80,
-      "goodsName": "纳美小苏打源生护龈牙膏3010/支"
+      "goodsName": "纳美小苏打源生护龈牙膏3010/支",
+      "_id": "5cbfc997cc8e1c79ab2a966b",
+      "id": "f23c0f9512c34b9090a1692b869cd237",
+      "goods_serlal_number": "8801046886410",
+      "shop_id": "402880e860166f3c0160167897d60002",
+      "sub_id": "2c9f6c94621970a801626a35cb4d0175",
+      "name": "纳美小苏打源生护龈牙膏3010/支",
+      "orl_price": 24,
+      "present_price": 24,
+      "amount": 10000,
+      "detail": "<img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082441_8165.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082441_23.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082442_3800.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082442_7707.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082442_4566.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082442_2732.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082442_3066.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082442_4133.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082442_7029.jpg\" width=\"100%\" height=\"auto\" alt=\"\" /><img src=\"http://images.baixingliangfan.cn/shopGoodsDetailImg/20180411/20180411082443_9674.jpg\" width=\"100%\" height=\"auto\" alt=\"\" />",
+      "create_time": "1512208900922",
+      "update_time": "1524532141539",
+      "image_path": "http://images.baixingliangfan.cn/compressedPic/20180411082434_6944.jpg",
+      "__v": 0
     }, {
       "image": "http://images.baixingliangfan.cn/compressedPic/20180411085355_2725.jpg",
       "mallPrice": 9.50,

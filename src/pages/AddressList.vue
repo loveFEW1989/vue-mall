@@ -1,9 +1,10 @@
 <template>
-  <div class="address">
+  <div class="addresslist">
     <van-nav-bar title="地址列表" left-arrow @click-left="goback" />
     <Scroll :data="addressList" class="scroll">
       <div>
         <van-address-list
+         
           v-model="chosenAddressId"
           :list="addressList"
           @edit="onEdit"
@@ -22,7 +23,7 @@ import { mapGetters, mapMutations } from "vuex";
 
 import Scroll from "components/public/Scroll";
 export default {
-  name: "address",
+  name: "addressList",
   components: { Scroll },
   computed: {
     ...mapGetters(["addressList"])
@@ -30,10 +31,11 @@ export default {
   data() {
     return {
       list: [],
-      chosenAddressId: "0",
+      chosenAddressId: 0,
       isPay: false
     };
   },
+  
   methods: {
     ...mapMutations(["clearAllAddressList","setSelectedAddress"]),
 
@@ -45,26 +47,30 @@ export default {
           message: "确认清空所有地址？"
         })
         .then(() => {
-          console.log("111");
+         
           this.clearAllAddressList();
         })
         .catch(() => {
-          console.log("22");
+         
           return;
         });
     },
+   
     onAdd() {
       this.$router.push({ name: "AddressEdit" });
     },
-    onSelect(item) {
-     console.log(item)
+    onSelect(item,index) {
+    
+     this.chosenAddressId = index
      this.setSelectedAddress(item)
     },
     onEdit(item, index) {
+    
     this.$router.push({
               name:'AddressEdit',
               params:{
-                item
+                item,
+                index
               }
             })
     },
@@ -76,7 +82,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.address {
+.addresslist {
   position: fixed;
   top: 0px;
   left: 0;

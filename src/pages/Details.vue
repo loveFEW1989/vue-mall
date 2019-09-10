@@ -1,7 +1,7 @@
 <template>
   <div class="goods">
     <van-goods-action>
-      <van-goods-action-icon icon="cart-o" to="/ShoopingCart" text="购物车" :info="this.GoodsList.length" />
+      <van-goods-action-icon icon="cart-o" @click="onClickCart" text="购物车" :info="this.GoodsList.length" />
       <van-goods-action-icon icon="shop-o" @click="goHome" text="店铺" />
       <van-goods-action-button type="warning"  @click="add2Cart(goods)"  text="加入购物车" />
       <van-goods-action-button type="danger" text="立即购买" />
@@ -51,6 +51,9 @@ export default {
     };
   },
   methods: {
+    onClickCart() {
+      this.$router.push({ name: "ShoppingCart" });
+    },
     goHome() {
       this.$router.push({ name: "Home" });
     },

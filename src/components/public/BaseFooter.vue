@@ -12,7 +12,7 @@
 export default {
     // props:{
     //     active:{
-    //         type:Number,
+    //         type:null,
     //         default:0
     //     }
     // },

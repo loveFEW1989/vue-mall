@@ -3,7 +3,7 @@
     <div class="title border-bottom">商品推荐</div>
     <swiper :options="swiperOption">
       <swiper-slide v-for="val of recommend" :key="val.goodsId" class="recommend-item border-right">
-      <img :src="val.image" class="recommend-img" alt="">
+      <img @click="gotoDetail(val)"  :src="val.image" class="recommend-img" alt="">
       <p class="name">{{val.goodsName}}</p>
       <p class="price">
         <span class="code">￥</span>
@@ -45,6 +45,19 @@ Vue.use(VueAwesomeSwiper)
           }
         }
       }
+    },
+    methods: {
+   
+      //  跳转到商品详情页
+        gotoDetail(val) {
+           
+            this.$router.push({
+              name:'Details',
+              params:{
+                item:val
+              }
+            })
+        }
     }
   }
 </script>
